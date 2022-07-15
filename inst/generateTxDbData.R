@@ -13,3 +13,15 @@ GenomeInfoDb::genome(txdb) <- "mm10"
 txdb_mouse <- txdb
 save(txdb_mouse,
      file="../data/txdb_mouse.rda")
+
+
+library(crisprDesign)
+txdb <- getTxDb(organism="Homo sapiens",
+                release=106)
+txdb <- TxDb2GRangesList(txdb)
+GenomeInfoDb::genome(txdb) <- "hg38"
+txdb_human_106 <- txdb
+save(txdb_human_106,
+     file="../data/txdb_human_106.rda")
+
+
