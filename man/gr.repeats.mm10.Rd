@@ -3,7 +3,7 @@
 \docType{data}
 \name{gr.repeats.mm10}
 \alias{gr.repeats.mm10}
-\title{Repeat elements coordinates for mm10}
+\title{Repeat elements coordinates found in the mouse genome (mm10/GRCm38)}
 \format{
 GRanges
 }
@@ -11,6 +11,7 @@ GRanges
 gr.repeats.mm10
 }
 \description{
-Repeat elements coordinates for mm10
+Repeat elements coordinates for mm10 obtained from the RepeatMasker track
+found at the UCSC genome browser.
 }
 \keyword{datasets}

@@ -3,7 +3,7 @@
 \docType{data}
 \name{gr.repeats.hg38}
 \alias{gr.repeats.hg38}
-\title{Repeat elements coordinates for hg38}
+\title{Repeat elements coordinates found in the human genome (hg38/GRCh38)}
 \format{
 GRanges
 }
@@ -11,6 +11,7 @@ GRanges
 gr.repeats.hg38
 }
 \description{
-Repeat elements coordinates for hg38
+Repeat elements coordinates for hg38 obtained from the RepeatMasker track
+found at the UCSC genome browser.
 }
 \keyword{datasets}
