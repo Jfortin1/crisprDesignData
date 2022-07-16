@@ -1,29 +1,17 @@
 ---
 title: "crisprDesignData: example data for the crisprDesign ecosystem"
-author: 
-- name: Jean-Philippe Fortin
-  affiliation: Department of Data Science and Statistical Computing, gRED,
-   Genentech
-  email: fortin946@gmail.com
-- name: Luke Hoberecht
-  affiliation: Department of Data Science and Statistical Computing, gRED,
-   Genentech
-  email: lukehob3@gmail.com
-date: "`r Sys.Date()`"
 output: 
-  BiocStyle::html_document:
-    toc_float: true
-    theme: paper
-    number_sections: true
-vignette: >
-  %\VignetteIndexEntry{crisprDesignData}
-  %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
+  github_document:
+    toc: true
 ---
 
 ```{r, echo=FALSE, results="hide"}
-options("knitr.graphics.auto_pdf"=TRUE, eval=TRUE)
+options("knitr.graphics.auto_pdf"=TRUE)
 ```
+
+Authors: Jean-Philippe Fortin, Luke Hoberecht
+
+Date: July 16, 2022
 
 # Overview
 
