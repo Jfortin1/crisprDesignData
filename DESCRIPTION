@@ -1,20 +1,22 @@
 Package: crisprDesignData
-Title: Useful data for crisprDesign
-Description: Useful data for crisprDesign.
-Version: 0.99.4
+Title: Example data for the crisprDesign ecosystem
+Description: Example data for the crisprDesign ecosystem.
+Version: 0.99.5
 Authors@R: c(
     person("Jean-Philippe", "Fortin", email = "fortin946@gmail.com", role = c("aut", "cre")),
     person("Luke", "Hoberecht", email = "lukehob3@gmail.com", role = c("aut"))
     )
 Depends: R (>= 3.6.0)
 Suggests:
+    crisprDesign,
+    S4Vectors,
     BiocStyle,
     knitr,
     rmarkdown,
     shape,
     testthat
 LazyData: TRUE
-License: file LICENSE
+License: MIT + file LICENSE
 Encoding: UTF-8
 RoxygenNote: 7.2.0
 VignetteBuilder: knitr

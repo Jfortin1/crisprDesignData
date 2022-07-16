@@ -1,8 +1,9 @@
 library(crisprDesign)
+library(devtools)
 
 load("../data/txdb_human.rda")
 load("../data/txdb_mouse.rda")
 tss_human <- getTssObjectFromTxObject(txdb_human)
 tss_mouse <- getTssObjectFromTxObject(txdb_mouse)
-save(tss_human, file="../data/tss_human.rda")
-save(tss_mouse, file="../data/tss_mouse.rda")
+use_data(tss_human, compress="xz", overwrite=TRUE)
+use_data(tss_mouse, compress="xz", overwrite=TRUE)
