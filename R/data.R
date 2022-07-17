@@ -52,3 +52,13 @@
 "tss_mouse"
 
 
+
+#' Genomic coordinates of FANTOM5 CAGE Peaks in Hg38 coordinates
+#'
+#' Genomic coordinates of FANTOM5 CAGE Peaks in Hg38 coordinates.
+#' 
+#' @format GRanges
+"humanCagePeaks"
+
+
+
