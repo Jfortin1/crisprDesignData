@@ -10,6 +10,7 @@ crisprDesignData: example data for the crisprDesign ecosystem
 -   [Datasets](#datasets)
 -   [TxDb datasets](#txdb-datasets)
 -   [TSS datasets](#tss-datasets)
+-   [mRNA datasets](#mrna-datasets)
 -   [Repeats datasets](#repeats-datasets)
 -   [License](#license)
 -   [Reproducibility](#reproducibility)
@@ -53,14 +54,16 @@ library(crisprDesignData)
 
 # Datasets
 
-| Object name       | Object class  | Version     | Description                                              |
-|-------------------|---------------|-------------|----------------------------------------------------------|
-| `txdb_human`      | `GRangesList` | Release 104 | Ensembl gene model for human (hg38/GRCh38)               |
-| `txdb_mouse`      | `GRangesList` | Release 102 | Ensembl gene model for mouse (mm10/GRCm38)               |
-| `tss_human`       | `GRanges`     | Release 104 | Ensembl-based TSS coordinates for human (hg38/GRCh38)    |
-| `tss_mouse`       | `GRanges`     | Release 102 | Ensembl-based TSS coordinates for human (mm10/GRCm38)    |
-| `gr.repeats.hg38` | `GRanges`     |             | RepeatMasker data from UCSC genome browser (hg38/GRCh38) |
-| `gr.repeats.mm10` | `GRanges`     |             | RepeatMasker data from UCSC genome browser (mm10/GRCm38) |
+| Object name       | Object class   | Version     | Description                                                     |
+|-------------------|----------------|-------------|-----------------------------------------------------------------|
+| `txdb_human`      | `GRangesList`  | Release 104 | Ensembl gene model for human (hg38/GRCh38)                      |
+| `txdb_mouse`      | `GRangesList`  | Release 102 | Ensembl gene model for mouse (mm10/GRCm38)                      |
+| `tss_human`       | `GRanges`      | Release 104 | Ensembl-based TSS coordinates for human (hg38/GRCh38)           |
+| `tss_mouse`       | `GRanges`      | Release 102 | Ensembl-based TSS coordinates for human (mm10/GRCm38)           |
+| `mrnasHuman`      | `DNAStringSet` | Release 104 | Ensembl-based mRNA nucleotide sequences for human (hg38/GRCh38) |
+| `mrnasMouse`      | `DNAStringSet` | Release 102 | Ensembl-based mRNA nucleotide sequences for mouse (mm10/GRCm38) |
+| `gr.repeats.hg38` | `GRanges`      |             | RepeatMasker data from UCSC genome browser (hg38/GRCh38)        |
+| `gr.repeats.mm10` | `GRanges`      |             | RepeatMasker data from UCSC genome browser (mm10/GRCm38)        |
 
 # TxDb datasets
 
@@ -265,7 +268,7 @@ tss <- queryTss(tss_human,
                 queryColumn="gene_symbol",
                 queryValue="KRAS",
                 tss_window=c(-500,0))
-tss
+head(tss)
 ```
 
     ## GRanges object with 3 ranges and 5 metadata columns:
@@ -281,6 +284,46 @@ tss
     ##   region_3        KRAS ENST00000556131 KRAS_ENST00000556131
     ##   -------
     ##   seqinfo: 25 sequences (1 circular) from hg38 genome
+
+# mRNA datasets
+
+The `mrnasHuman` and `mrnasMouse` objects are `DNAStringSet` storing the
+nucleotide sequence of mRNAs derived from the `txdb_human` and
+`txdb_mouse` gene models, respectively. It was obtained using the
+function `getMrnaSequences` from `crisprDesign`. See the script
+`generateMrnaData.R`in the `inst` folder to see how to generate such
+data. The names of the `DNAStringSet` are Ensembl transcript IDs:
+
+``` r
+data(mrnasHuman, package="crisprDesignData")
+data(mrnasMouse, package="crisprDesignData")
+head(mrnasHuman)
+```
+
+    ## DNAStringSet object of length 6:
+    ##     width seq                                               names               
+    ## [1]  1032 CTGCTGCTGCTGCGCCCCATCCC...TAATAAATTTGCTGTGGTTTGTA ENST00000000233
+    ## [2]  2450 AGAGTGGGGCACAGCGAGGCGCT...GATTAAAAAACAAACAAAACATA ENST00000000412
+    ## [3]  2274 GTCAGCTGGAGGAAGCGGAGTAG...ATATATAATACCGAGCTCAAAAA ENST00000000442
+    ## [4]  3715 CCTACCCCAGCTCTCGCGCCGCG...CTAGTGAGGATGTTTTGTTAAAA ENST00000001008
+    ## [5]  4556 ACAGCCAATCCCCCGAGCGGCCG...TAGAATAAACCGTGGGGACCCGC ENST00000001146
+    ## [6]  2184 GTCTAAGCCCCAGCTCCTGGCGG...ACGAGTAATTTCATAGAAACGAA ENST00000002125
+
+``` r
+head(mrnasMouse)
+```
+
+    ## DNAStringSet object of length 6:
+    ##     width seq                                               names               
+    ## [1]  3262 CACACATCCGGTTCTTCCGGGAG...TTCTTCACTTCTTTGTCTCTGCA ENSMUST00000000001
+    ## [2]   902 GTCAGTGCACAACTGCCAACTGG...TTAAATAAATTTATTTTACTTGC ENSMUST00000000003
+    ## [3]  2574 GGTCCGTGTGCCACCTTTTCCCT...AATATACATATCACTCTAGAAAA ENSMUST00000000010
+    ## [4]  2143 TGGAAACACATTCAAATAATGTG...AAAATGTTTGATGTTTTATCCCC ENSMUST00000000028
+    ## [5]  3708 GGCACTGACCAGTTCGCAAACTG...AATAAAGCATTTAAAATACTATT ENSMUST00000000033
+    ## [6]  1190 TCTCTTCAGCAGAAGACACCACT...AAGTTACTGGATTGCCTCAGTTA ENSMUST00000000049
+
+Those objects are particularly useful for gRNA design for RNA-targeting
+nucleases such as RfxCas13d (CasRx).
 
 # Repeats datasets
 
@@ -334,9 +377,9 @@ sessionInfo()
     ## [8] base     
     ## 
     ## other attached packages:
-    ## [1] crisprDesign_0.99.95    crisprBase_1.1.2        GenomicRanges_1.47.6   
+    ## [1] crisprDesign_0.99.99    crisprBase_1.1.2        GenomicRanges_1.47.6   
     ## [4] GenomeInfoDb_1.31.6     IRanges_2.29.1          S4Vectors_0.33.11      
-    ## [7] BiocGenerics_0.41.2     crisprDesignData_0.99.5
+    ## [7] BiocGenerics_0.41.2     crisprDesignData_0.99.8
     ## 
     ## loaded via a namespace (and not attached):
     ##   [1] bitops_1.0-7                  matrixStats_0.61.0           
@@ -348,13 +391,13 @@ sessionInfo()
     ##  [13] bit_4.0.4                     curl_4.3.2                   
     ##  [15] compiler_4.2.0                crisprBowtie_1.1.1           
     ##  [17] cli_3.3.0                     Biobase_2.55.0               
-    ##  [19] basilisk.utils_1.5.0          crisprScoreData_1.1.3        
+    ##  [19] basilisk.utils_1.9.1          crisprScoreData_1.1.3        
     ##  [21] xml2_1.3.3                    DelayedArray_0.21.2          
     ##  [23] rtracklayer_1.55.4            randomForest_4.7-1           
     ##  [25] readr_2.1.2                   rappdirs_0.3.3               
     ##  [27] stringr_1.4.0                 digest_0.6.29                
     ##  [29] Rsamtools_2.11.0              rmarkdown_2.13               
-    ##  [31] crisprScore_1.1.6             basilisk_1.9.1               
+    ##  [31] crisprScore_1.1.9             basilisk_1.9.2               
     ##  [33] XVector_0.35.0                pkgconfig_2.0.3              
     ##  [35] htmltools_0.5.2               MatrixGenerics_1.7.0         
     ##  [37] dbplyr_2.1.1                  fastmap_1.1.0                

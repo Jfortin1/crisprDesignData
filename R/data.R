@@ -62,3 +62,22 @@
 
 
 
+#' DNAStringSet of mRNA sequences of human transcripts (Ensembl)
+#'
+#' DNAStringSet of mRNA sequences of human transcripts
+#' (Ensembl release 104) extracted from the txdb_human object.
+#' 
+#' @format DNAStringSet
+"mrnasHuman"
+
+
+#' DNAStringSet of mRNA sequences of mouse transcripts (Ensembl)
+#'
+#' DNAStringSet of mRNA sequences of mouse transcripts
+#' (Ensembl release 102) extracted from the txdb_human object.
+#' 
+#' @format DNAStringSet
+"mrnasMouse"
+
+
+

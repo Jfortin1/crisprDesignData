@@ -56,6 +56,8 @@ library(crisprDesignData)
 | `txdb_mouse`  | `GRangesList`   | Release 102 | Ensembl gene model for mouse (mm10/GRCm38) |
 | `tss_human`   | `GRanges`       | Release 104 | Ensembl-based TSS coordinates for human (hg38/GRCh38) |
 | `tss_mouse`   | `GRanges`       | Release 102 | Ensembl-based TSS coordinates for human (mm10/GRCm38) |
+| `mrnasHuman`  | `DNAStringSet`  | Release 104 | Ensembl-based mRNA nucleotide sequences for human (hg38/GRCh38) |
+| `mrnasMouse`  | `DNAStringSet`  | Release 102 | Ensembl-based mRNA nucleotide sequences for mouse (mm10/GRCm38) |
 | `gr.repeats.hg38`   | `GRanges` |             | RepeatMasker data from UCSC genome browser (hg38/GRCh38) |
 | `gr.repeats.mm10`   | `GRanges` |             | RepeatMasker data from UCSC genome browser (mm10/GRCm38) |
 
@@ -140,8 +142,30 @@ tss <- queryTss(tss_human,
                 queryColumn="gene_symbol",
                 queryValue="KRAS",
                 tss_window=c(-500,0))
-tss
+head(tss)
 ```
+
+
+
+# mRNA datasets
+
+The `mrnasHuman` and `mrnasMouse` objects are `DNAStringSet` storing the
+nucleotide sequence of mRNAs derived from the `txdb_human` and `txdb_mouse`
+gene models, respectively. It was obtained using the function
+`getMrnaSequences` from `crisprDesign`. See the script 
+`generateMrnaData.R`in the `inst` folder to see how to generate such data.
+The names of the `DNAStringSet` are Ensembl transcript IDs:
+
+
+```{r}
+data(mrnasHuman, package="crisprDesignData")
+data(mrnasMouse, package="crisprDesignData")
+head(mrnasHuman)
+head(mrnasMouse)
+```
+
+Those objects are particularly useful for gRNA design for RNA-targeting
+nucleases such as RfxCas13d (CasRx). 
 
 
 # Repeats datasets
