@@ -5,5 +5,6 @@ txdb_mouse.rda
 tss_human.rda
 tss_mouse.rda
 humanCagePeaks.rda
+mouseCagePeaks.rda
 mrnasHuman.rda
 mrnasMouse.rda

@@ -53,12 +53,22 @@
 
 
 
-#' Genomic coordinates of FANTOM5 CAGE Peaks in Hg38 coordinates
+#' Genomic coordinates of FANTOM5 CAGE Peaks in hg38 coordinates
 #'
-#' Genomic coordinates of FANTOM5 CAGE Peaks in Hg38 coordinates.
+#' Genomic coordinates of FANTOM5 CAGE Peaks in hg38 coordinates.
 #' 
 #' @format GRanges
 "humanCagePeaks"
+
+
+
+#' Genomic coordinates of FANTOM5 CAGE Peaks in mm10 coordinates
+#'
+#' Genomic coordinates of FANTOM5 CAGE Peaks in mm10 coordinates.
+#' 
+#' @format GRanges
+"mouseCagePeaks"
+
 
 
 

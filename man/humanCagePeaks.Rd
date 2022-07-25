@@ -3,7 +3,7 @@
 \docType{data}
 \name{humanCagePeaks}
 \alias{humanCagePeaks}
-\title{Genomic coordinates of FANTOM5 CAGE Peaks in Hg38 coordinates}
+\title{Genomic coordinates of FANTOM5 CAGE Peaks in hg38 coordinates}
 \format{
 GRanges
 }
@@ -11,6 +11,6 @@ GRanges
 humanCagePeaks
 }
 \description{
-Genomic coordinates of FANTOM5 CAGE Peaks in Hg38 coordinates.
+Genomic coordinates of FANTOM5 CAGE Peaks in hg38 coordinates.
 }
 \keyword{datasets}
